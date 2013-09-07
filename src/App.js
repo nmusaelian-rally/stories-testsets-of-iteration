@@ -13,12 +13,12 @@ Ext.define('CustomApp', {
     },
     
     onScopeChange: function() {
-        console.log('onScopeChange');
+        //console.log('onScopeChange');
         this._makeStore();
     },
     
     _makeStore: function(){
-        console.log('_makeStore');
+        //console.log('_makeStore');
          var storyStore = Ext.create('Rally.data.WsapiDataStore', {
             model: 'UserStory',
             fetch: ['FormattedID','Name'],
@@ -33,7 +33,7 @@ Ext.define('CustomApp', {
     },
     
     _onStoriesLoaded: function(store, data){
-                console.log('_onStoriesLoaded');
+                //console.log('_onStoriesLoaded');
                 var userStories = [];
                 Ext.Array.each(data, function(story) {
                     var s  = {
@@ -49,7 +49,7 @@ Ext.define('CustomApp', {
    
 
      _createStoryGrid: function(stories) {
-        console.log('_createStoryGrid');
+        //console.log('_createStoryGrid');
         var that = this;
         var storyStore = Ext.create('Rally.data.custom.Store', {
                 data: stories,
@@ -82,7 +82,7 @@ Ext.define('CustomApp', {
     },
         
     _makeAnotherStore: function(){
-        console.log('_makeAnotherStore');
+        //console.log('_makeAnotherStore');
             Ext.create('Rally.data.WsapiDataStore', {
                 model: 'TestSet',
                 fetch: ['FormattedID', 'TestCases', 'TestCaseStatus'],  
@@ -97,7 +97,7 @@ Ext.define('CustomApp', {
     },
     
     _onTestSetsLoaded: function(store, data){
-        console.log('_onTestSetsLoaded');
+        //console.log('_onTestSetsLoaded');
         var testSets = [];
         var pendingTestCases = data.length;
          Ext.Array.each(data, function(testset){ 
@@ -129,7 +129,7 @@ Ext.define('CustomApp', {
  },
  
      _createTestSetGrid: function(testsets) {
-        console.log('_createTestSetGrid');
+        //console.log('_createTestSetGrid');
         console.log(testsets);
         var testSetStore = Ext.create('Rally.data.custom.Store', {
                 data: testsets,
