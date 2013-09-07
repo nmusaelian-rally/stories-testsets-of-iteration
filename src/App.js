@@ -3,7 +3,7 @@ Ext.define('CustomApp', {
     componentCls: 'app',
     scopeType: 'iteration',
     comboboxConfig: {
-        fieldLabel: 'Select Iteration:',
+        fieldLabel: 'Select an Iteration:',
         labelWidth: 100,
         width: 300
     },
@@ -35,7 +35,6 @@ Ext.define('CustomApp', {
     _onStoriesLoaded: function(store, data){
                 console.log('_onStoriesLoaded');
                 var userStories = [];
-                //console.log(data);
                 Ext.Array.each(data, function(story) {
                     var s  = {
                         FormattedID: story.get('FormattedID'),
@@ -52,7 +51,6 @@ Ext.define('CustomApp', {
      _createStoryGrid: function(stories) {
         console.log('_createStoryGrid');
         var that = this;
-        //console.log(stories);
         var storyStore = Ext.create('Rally.data.custom.Store', {
                 data: stories,
                 pageSize: 100
@@ -102,13 +100,11 @@ Ext.define('CustomApp', {
         console.log('_onTestSetsLoaded');
         var testSets = [];
         var pendingTestCases = data.length;
-         //console.log(data);
          Ext.Array.each(data, function(testset){ 
             var ts  = {
                 FormattedID: testset.get('FormattedID'),
-                _ref: testset.get('_ref'),  //required to make FormattedID clickable
+                _ref: testset.get('_ref'),  
                 TestCaseStatus: testset.get('TestCaseStatus'),
-                //TestCasesCount: story.get('Tasks').Count,
                 TestCases: []
             };
             var testCases = testset.getCollection('TestCases');
@@ -130,7 +126,6 @@ Ext.define('CustomApp', {
                             });
             testSets.push(ts);
      },this);
-     //this._createTestSetGrid(testSets);
  },
  
      _createTestSetGrid: function(testsets) {
@@ -145,7 +140,6 @@ Ext.define('CustomApp', {
             xtype: 'rallygrid',
             itemId: 'testsetgrid',
             store: testSetStore,
-            //cls: 'testsetgrid',
             columnCfgs: [
                 {
                    text: 'Formatted ID', dataIndex: 'FormattedID', xtype: 'templatecolumn',
